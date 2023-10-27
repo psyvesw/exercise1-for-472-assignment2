@@ -5,7 +5,7 @@
 library(dplyr)
 
 species_avg_sepal_length <- function(data, species_name) {
-  species_data<-data %>% filter(Species == species_name)
+  species_data<-data %>% filter(Species == species_name) %>% filter(Sepal.Width > 3)
   return(mean(species_data$Sepal.Length))
 }
 
