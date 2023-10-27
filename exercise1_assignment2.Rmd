@@ -1,0 +1,24 @@
+---
+title: "Function for exercise1"
+author: "Siyu Wang"
+date: "2023-10-27"
+output: html_document
+---
+The following code creates a function named species_avg_sepal_length which calculates the average sepal length for a specific species from the iris dataset, but only for those data entries where the sepal width is greater than 3 cm.
+
+```{r setup, message=FALSE}
+library(dplyr)
+```
+
+```{r analysis}
+species_avg_sepal_length <- function(data, species_name) {
+  species_data <- data %>% filter(Species == species_name) %>% filter(Sepal.Width > 3)
+  return(mean(species_data$Sepal.Length))
+}
+
+# Example usage:
+avg_length <- species_avg_sepal_length(iris, "versicolor")
+print(avg_length)
+```
+
+Output: for "versicolor" flowers that have a sepal width greater than 3 cm, the average sepal length is 6.4875.
